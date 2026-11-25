@@ -430,7 +430,7 @@
                                 </p>
                                 <p class="flex items-center gap-3">
                                     <i data-lucide="mail" class="w-5 h-5 text-white shrink-0"></i>
-                                    <a href="mailto:scisbt.muscu@gmail.com" class="text-white hover:underline">scisbt.muscu@gmail.com</a>
+                                    <a href="mailto:scisbt.muscu@gmail.com" data-mail data-mail-text class="text-white hover:underline">scisbt.muscu@gmail.com</a>
                                 </p>
                             </div>
 
@@ -521,11 +521,12 @@
 
                         <p class="text-[11px] text-mono-silver leading-relaxed">
                             Les informations saisies sont utilisées uniquement par l'association pour répondre à votre demande. Elles ne sont ni revendues ni conservées au-delà de la durée nécessaire à ce traitement.
-                            Pour exercer vos droits d'accès ou de suppression, écrivez à <a href="mailto:scisbt.muscu@gmail.com" class="underline text-white">scisbt.muscu@gmail.com</a>.
+                            Pour exercer vos droits d'accès ou de suppression, écrivez à <a href="mailto:scisbt.muscu@gmail.com" data-mail data-mail-text class="underline text-white">scisbt.muscu@gmail.com</a>.
                         </p>
 
                         <p id="submit-error" class="hidden text-sm text-red-400 text-center">
                             L'envoi automatique a échoué.
+                            <span id="submit-error-detail" class="block text-xs text-red-300 mt-1"></span>
                             <a id="mailto-fallback" href="#" class="underline text-white font-semibold">Cliquez ici pour envoyer la demande avec votre application e-mail</a>,
                             ou appelez le 07 81 38 64 74.
                         </p>
@@ -578,7 +579,7 @@
             </div>
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-mono-silver">
                 <p>&copy; 2026 SICSBT Musculation Boucau — Tous droits réservés.</p>
-                <p class="text-white font-medium">07 81 38 64 74 • scisbt.muscu@gmail.com</p>
+                <p class="text-white font-medium">07 81 38 64 74 • <span data-mail-text>scisbt.muscu@gmail.com</span></p>
             </div>
         </div>
     </footer>
@@ -587,8 +588,15 @@
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
 
-            /* Adresse qui reçoit les demandes (via FormSubmit) — à vérifier */
+            /* =====================================================================
+               ADRESSE QUI REÇOIT LES DEMANDES : c'est la SEULE ligne à modifier.
+               Elle met aussi à jour tous les liens et textes e-mail de la page.
+               ===================================================================== */
             const MAIL_TO = 'scisbt.muscu@gmail.com';
+
+            document.querySelectorAll('[data-mail]').forEach(a => { a.href = `mailto:${MAIL_TO}`; });
+            document.querySelectorAll('[data-mail-text]').forEach(el => { el.textContent = MAIL_TO; });
+
             const FORM_ENDPOINT = `https://formsubmit.co/ajax/${MAIL_TO}`;
 
             const escapeHTML = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -710,7 +718,7 @@
                 if (sel && plan) for (const o of sel.options) if (o.value === plan) { sel.value = plan; break; }
             }));
 
-            /* 4. Formulaire : envoi par e-mail */
+            /* 4. Formulaire : envoi par e-mail (FormSubmit) */
             const trialForm = document.getElementById('trial-form');
             const confirmationBox = document.getElementById('confirmation-box');
             const confirmationDetails = document.getElementById('confirmation-details');
@@ -719,6 +727,7 @@
             const submitBtn = document.getElementById('submit-btn');
             const submitLabel = document.getElementById('submit-label');
             const submitError = document.getElementById('submit-error');
+            const submitErrorDetail = document.getElementById('submit-error-detail');
             const SUBMIT_TEXT = "Envoyer ma demande d'essai";
 
             const d = new Date();
@@ -761,6 +770,7 @@
                 submitBtn.disabled = true;
                 submitLabel.textContent = 'Envoi en cours…';
                 submitError.classList.add('hidden');
+                submitErrorDetail.textContent = '';
 
                 const [y, m, day] = dateInput.value.split('-').map(Number);
                 const formattedDate = new Date(y, m - 1, day).toLocaleDateString('fr-FR', {
@@ -793,9 +803,15 @@
                 document.getElementById('mailto-fallback').href =
                     `mailto:${MAIL_TO}?subject=${encodeURIComponent('Demande SICSBT Musculation : ' + formula.value)}&body=${encodeURIComponent(mailBody)}`;
 
+                let timer;
                 try {
+                    // FormSubmit refuse les requêtes envoyées depuis un fichier ouvert en local (file://)
+                    if (location.protocol === 'file:') {
+                        throw new Error("La page doit être hébergée sur un site (http/https) pour que l'envoi fonctionne, pas ouverte en local.");
+                    }
+
                     const ctrl = new AbortController();
-                    const timer = setTimeout(() => ctrl.abort(), 15000);
+                    timer = setTimeout(() => ctrl.abort(), 15000);
 
                     const res = await fetch(FORM_ENDPOINT, {
                         method: 'POST',
@@ -803,7 +819,6 @@
                         body: JSON.stringify(payload),
                         signal: ctrl.signal
                     });
-                    clearTimeout(timer);
 
                     let data = {};
                     try { data = await res.json(); } catch (_) {}
@@ -811,7 +826,7 @@
                     // FormSubmit renvoie success: "true" (chaîne) quand tout va bien
                     if (!res.ok || String(data.success) !== 'true') {
                         console.error('FormSubmit :', res.status, data);
-                        throw new Error(data.message || 'Envoi refusé');
+                        throw new Error(data.message || `Envoi refusé (code ${res.status})`);
                     }
 
                     confirmationDetails.innerHTML = `
@@ -825,8 +840,12 @@
                     lucide.createIcons();
                 } catch (err) {
                     console.error(err);
+                    submitErrorDetail.textContent = err && err.name === 'AbortError'
+                        ? 'Le serveur a mis trop de temps à répondre.'
+                        : (err && err.message ? err.message : '');
                     submitError.classList.remove('hidden');
                 } finally {
+                    clearTimeout(timer);
                     submitBtn.disabled = false;
                     submitLabel.textContent = SUBMIT_TEXT;
                 }
