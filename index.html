@@ -1,511 +1,844 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
-<title>SICSBT Musculation | Votre salle associative à Boucau (64340)</title>
-<meta name="description" content="SICSBT Musculation : salle de musculation associative à Boucau (64340). Plateau de musculation, cardio, cours encadrés et séance découverte offerte.">
-<meta property="og:title" content="SICSBT Musculation Boucau">
-<meta property="og:description" content="Salle associative de musculation et de cardio, place Manolo Perez, à Boucau.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/plateau-muscu-high.jpg?enable-io=true&width=1200">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SICSBT Musculation | Votre salle associative à Boucau (64340)</title>
+    <meta name="description" content="SICSBT Musculation : salle de musculation associative à Boucau (64340). Plateau de musculation, cardio, cours encadrés et séance découverte offerte.">
+    <meta property="og:title" content="SICSBT Musculation Boucau">
+    <meta property="og:description" content="Salle associative de musculation et de cardio, place Manolo Perez, à Boucau.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/plateau-muscu-high.jpg?enable-io=true&width=1200">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
 
-<script>
-tailwind.config = {
-  future: { hoverOnlyWhenSupported: true },
-  theme: { extend: {
-    fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Oswald','Impact','sans-serif'] },
-    colors: { mono: { black:'#000', card:'#111', elevated:'#18181B', border:'#262626', silver:'#A1A1AA', platinum:'#E4E4E7' } }
-  } }
-}
-</script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Oswald', 'sans-serif'] },
+                    colors: {
+                        mono: {
+                            black: '#000000', obsidian: '#080808', card: '#111111', elevated: '#18181B',
+                            border: '#262626', silver: '#A1A1AA', platinum: '#E4E4E7', white: '#FFFFFF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-<style>
-  html { background:#000; scroll-padding-top:4.5rem; -webkit-text-size-adjust:100%; }
-  body { background:transparent; padding-bottom:calc(76px + env(safe-area-inset-bottom)); }
-  a, button { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-  :focus-visible { outline:2px solid #fff; outline-offset:2px; }
+    <style>
+        html { background: #000; }
+        body { background: transparent; position: relative; }
 
-  #bg-fixed { position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; background:#000; }
-  #bg-fixed img { position:absolute; inset:-20px; width:calc(100% + 40px); height:calc(100% + 40px); object-fit:cover; filter:blur(8px) contrast(1.1); opacity:.35; transform:translateZ(0); }
-  #bg-fixed::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,.65); }
+        #bg-fixed { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #000; }
+        #bg-fixed img {
+            position: absolute; inset: -40px; width: calc(150% + 180px); height: calc(100% + 80px);
+            object-fit: cover; object-position: center; filter: blur(10px) contrast(1.1);
+            opacity: .35; transform: translateZ(0);
+        }
+        #bg-fixed .bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.72); }
 
-  .glass { background:rgba(10,10,10,.85); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
-  @media (min-width:768px) { .glass { background:rgba(10,10,10,.68); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); } body { padding-bottom:0; } }
+        :root { --glass-bg: rgba(10,10,10,.72); --glass-blur: 12px; }
+        .backdrop-blur-md {
+            -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+            backdrop-filter: blur(var(--glass-blur)) !important;
+            background-color: var(--glass-bg) !important;
+        }
+        #planning, #essai { background-color: transparent !important; }
 
-  /* Champs : 16px évite le zoom automatique d'iOS, 48px = zone de toucher confortable */
-  input, select { font-size:16px !important; min-height:48px; }
-  input[type=checkbox] { min-height:0; }
-  input[type=date] { -webkit-appearance:none; appearance:none; color-scheme:dark; }
-  .scroll-x { scrollbar-width:none; -webkit-overflow-scrolling:touch; }
-  .scroll-x::-webkit-scrollbar { display:none; }
-  .day-btn { flex-shrink:0; min-height:44px; }
-  .btn-w { background:#fff; color:#000; font-weight:800; text-transform:uppercase; letter-spacing:.05em; }
-  .btn-w:hover { background:#E4E4E7; }
-  .btn-w:active, .btn-o:active { transform:scale(.97); }
-  .btn-o { background:#18181B; color:#fff; border:1px solid #262626; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
-  .btn-o:hover { background:#fff; color:#000; }
-  header { padding-top:env(safe-area-inset-top); }
-  @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
-</style>
+        .nav-cta { transition: transform .15s ease, background-color .2s ease; }
+        .nav-cta:active { transform: scale(.92); }
+        .nav-cta.clicked { animation: cta-pop .45s ease; }
+        @keyframes cta-pop { 0% { transform: scale(.92); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+    </style>
 </head>
-<body class="text-white font-sans antialiased overflow-x-hidden">
+<body class="text-white font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden">
 
-<div id="bg-fixed" aria-hidden="true">
-  <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/plateau-muscu-high.jpg?enable-io=true&width=1200" onerror="this.style.display='none'" alt="">
-</div>
-
-<!-- NAVBAR -->
-<header class="fixed top-0 inset-x-0 z-50 glass border-b border-mono-border">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-[4.5rem] flex items-center justify-between gap-3">
-    <a href="#accueil" class="flex items-center gap-3 min-w-0">
-      <span class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-mono-card border border-mono-border flex items-center justify-center overflow-hidden shrink-0">
-        <img src="logo_sans_fond.png" onerror="this.onerror=null;this.src='https://placehold.co/96x96/111111/FFFFFF?text=SICSBT'" alt="Logo du SICSBT Musculation Boucau" class="w-full h-full object-contain p-1">
-      </span>
-      <span class="flex flex-col min-w-0">
-        <span class="font-display text-xl md:text-3xl font-bold tracking-wider leading-none uppercase truncate">SICSBT Musculation</span>
-        <span class="text-[10px] font-semibold uppercase tracking-[.14em] text-mono-silver mt-1 truncate">Boucau • Association sportive</span>
-      </span>
-    </a>
-    <div class="flex items-center gap-2 md:gap-3">
-      <nav class="hidden lg:flex items-center gap-7 mr-2 text-sm font-medium text-mono-silver">
-        <a href="#accueil" class="hover:text-white">Accueil</a>
-        <a href="#espaces" class="hover:text-white">Le club et le matériel</a>
-        <a href="#planning" class="hover:text-white">Planning et cours</a>
-        <a href="#Contact" class="hover:text-white">Contact</a>
-      </nav>
-      <a href="#tarifs" class="btn-w hidden md:inline-flex items-center px-5 py-2.5 rounded-lg text-sm">Abonnement</a>
-      <button id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" class="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg hover:bg-mono-card">
-        <i data-lucide="menu" id="ic-open" class="w-6 h-6"></i><i data-lucide="x" id="ic-close" class="w-6 h-6 hidden"></i>
-      </button>
-    </div>
-  </div>
-  <nav id="menu" class="hidden lg:hidden max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-mono-border bg-mono-card/95 px-4 sm:px-6 py-3">
-    <div class="md:grid md:grid-cols-2 md:gap-x-4">
-      <a href="#accueil" class="m-link block px-3 py-3.5 rounded-lg text-base font-medium hover:bg-mono-elevated">Accueil</a>
-      <a href="#espaces" class="m-link block px-3 py-3.5 rounded-lg text-base font-medium hover:bg-mono-elevated">Le club et le matériel</a>
-      <a href="#planning" class="m-link block px-3 py-3.5 rounded-lg text-base font-medium hover:bg-mono-elevated">Planning et cours</a>
-      <a href="#tarifs" class="m-link block px-3 py-3.5 rounded-lg text-base font-medium hover:bg-mono-elevated">Abonnement</a>
-      <a href="#Contact" class="m-link block px-3 py-3.5 rounded-lg text-base font-medium hover:bg-mono-elevated">Contact</a>
-    </div>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section id="accueil" class="min-h-[100svh] flex items-center pt-14 md:pt-[4.5rem]">
-  <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 md:py-20">
-    <div class="max-w-3xl mx-auto"></div>
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-white/25 text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-5">
-        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>Association sportive • Boucau (64340)
-      </div>
-      <h1 class="font-display text-[3.2rem] sm:text-7xl lg:text-8xl font-bold uppercase leading-[1] tracking-tight mb-5">SICSBT Musculation</h1>
-      <p class="text-base sm:text-xl text-mono-platinum mb-8 max-w-2xl leading-relaxed">Bienvenue au <strong class="text-white">SICSBT Musculation Boucau</strong>. Un espace associatif alliant passion, convivialité et performance, équipé pour la musculation, le cardio et le renforcement physique, quel que soit votre niveau.</p>
-      <div class="flex flex-col sm:flex-row gap-3">
-        <a href="#espaces" class="btn-w inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm sm:text-base shadow-xl shadow-white/10">Découvrir nos activités <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
-        <a href="#tarifs" class="btn-o glass inline-flex items-center justify-center px-8 py-4 rounded-xl text-sm sm:text-base">Abonnements et tarifs</a>
-      </div>
-      <dl class="grid grid-cols-3 gap-3 sm:gap-6 mt-10 sm:mt-14 pt-7 border-t border-white/20 max-w-xl">
-        <div><dd class="font-display text-3xl sm:text-5xl font-bold order-1">100%</dd><dt class="text-[11px] sm:text-sm uppercase tracking-wider mt-1">Esprit associatif</dt></div>
-        <div><dd class="font-display text-3xl sm:text-5xl font-bold">64340</dd><dt class="text-[11px] sm:text-sm uppercase tracking-wider mt-1">Place Manolo Perez</dt></div>
-        <div><dd class="font-display text-3xl sm:text-5xl font-bold">6J/7</dd><dt class="text-[11px] sm:text-sm uppercase tracking-wider mt-1">Accès adhérents</dt></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<!-- CLUB & MATÉRIEL -->
-<section id="espaces" class="py-14 sm:py-20 lg:py-24 border-t border-white/10">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div class="glass rounded-3xl border border-mono-border overflow-hidden mb-14 sm:mb-20 grid grid-cols-1 lg:grid-cols-2 shadow-2xl">
-      <div class="relative aspect-[16/9] lg:aspect-auto lg:min-h-[420px]">
-        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/unnamed-high-n71xp3.jpg?enable-io=true&width=1200" onerror="this.src='https://placehold.co/1200x800/111111/FFFFFF?text=Association+SICSBT+Boucau'" alt="Une association sportive et locale à Boucau" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-mono-card/90 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-mono-card"></div>
-      </div>
-      <div class="p-6 sm:p-10 lg:p-12 flex flex-col justify-center">
-        <p class="flex items-center gap-3 mb-3 text-xs font-bold uppercase tracking-[.18em]"><img src="logo_sans_fond.png" onerror="this.style.display='none'" alt="" class="w-9 h-9 object-contain">L'esprit du club</p>
-        <h2 class="font-display text-3xl sm:text-5xl font-bold uppercase leading-tight mb-4">Une association sportive et locale</h2>
-        <p class="text-mono-platinum leading-relaxed mb-6">Ici, la passion du sport prime : nos coachs et bénévoles s'investissent au quotidien pour transmettre les bonnes pratiques, accompagner chaque pratiquant en toute sécurité et créer une dynamique collective au cœur de Boucau.</p>
-        <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3 pt-5 border-t border-mono-border text-sm font-medium">
-          <p class="flex items-center gap-2.5"><i data-lucide="shield-check" class="w-5 h-5 shrink-0"></i>Encadrement et conseils</p>
-          <p class="flex items-center gap-2.5"><i data-lucide="users" class="w-5 h-5 shrink-0"></i>Ambiance conviviale</p>
-        </div>
-      </div>
+    <!-- FOND FIXE FLOU -->
+    <div id="bg-fixed" aria-hidden="true">
+        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/plateau-muscu-high.jpg?enable-io=true&width=1920"
+             onerror="this.src='https://placehold.co/1920x1080/000000/FFFFFF?text=SICSBT+MUSCULATION+BOUCAU'" alt="">
+        <div class="bg-overlay"></div>
     </div>
 
-    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-      <p class="text-mono-silver font-bold text-xs sm:text-sm uppercase tracking-widest">Nos installations • Boucau</p>
-      <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase mt-2">Notre matériel et nos espaces</h2>
-      <p class="text-mono-silver mt-4 sm:text-lg">Des équipements complets et entretenus pour progresser en musculation, travailler votre cardio et préparer vos objectifs sportifs.</p>
-    </div>
+    <!-- NAVBAR -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-mono-black/80 backdrop-blur-md border-b border-mono-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#accueil" class="flex items-center gap-3.5 group">
+                    <div class="relative w-12 h-12 rounded-xl bg-mono-card border border-mono-border group-hover:border-white flex items-center justify-center overflow-hidden transition-all shadow-lg">
+                        <!-- Logo : placez "logo_sans_fond.png" à côté de index.html -->
+                        <img src="logo_sans_fond.png"
+                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/111111/FFFFFF?text=SICSBT'"
+                             alt="Logo officiel du SICSBT Musculation Boucau" class="w-full h-full object-contain p-1">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl sm:text-3xl font-bold tracking-wider text-white leading-none uppercase">SICSBT <span class="text-white">MUSCULATION</span></span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.24em] text-mono-silver mt-1">Boucau • Association sportive</span>
+                    </div>
+                </a>
 
-    <!-- Mobile : carrousel à faire glisser. iPad : 2 colonnes. Ordinateur : 3 colonnes. -->
-    <div id="equip" class="scroll-x flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:overflow-visible"></div>
-    <p class="md:hidden text-center text-xs text-mono-silver mt-3 flex items-center justify-center gap-1.5"><i data-lucide="chevrons-left-right" class="w-4 h-4"></i>Faites glisser pour voir les espaces</p>
-  </div>
-</section>
-
-<!-- PLANNING -->
-<section id="planning" class="py-14 sm:py-20 lg:py-24 border-y border-white/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 mb-6 sm:mb-10">
-      <div>
-        <p class="text-mono-silver font-bold text-xs sm:text-sm uppercase tracking-widest">Créneaux encadrés et accès libre</p>
-        <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase mt-2">Planning et cours</h2>
-      </div>
-      <p class="text-mono-silver max-w-md text-sm sm:text-base">Filtrez par jour de la semaine pour organiser vos séances au SICSBT Musculation Boucau.</p>
-    </div>
-
-    <div class="glass p-4 sm:p-5 rounded-2xl border border-mono-border mb-5">
-      <p class="text-xs font-bold uppercase tracking-wider mb-3" id="day-label">Sélectionner un jour</p>
-      <div id="day-filters" role="group" aria-labelledby="day-label" class="scroll-x flex gap-2 overflow-x-auto md:flex-wrap -mx-1 px-1 pb-1"></div>
-    </div>
-
-    <div id="sched-wrap" class="glass rounded-2xl border border-mono-border overflow-hidden shadow-2xl">
-      <div id="sched-cards" class="lg:hidden grid grid-cols-1 md:grid-cols-2 md:gap-px bg-mono-border"></div>
-      <div class="hidden lg:block overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead><tr class="bg-mono-elevated/90 border-b border-mono-border text-xs font-bold uppercase tracking-wider">
-            <th class="py-4 px-6">Jour et horaire</th><th class="py-4 px-6">Séance</th><th class="py-4 px-6">Discipline</th><th class="py-4 px-6">Encadrement</th><th class="py-4 px-6">Disponibilité</th><th class="py-4 px-6 text-right">Action</th>
-          </tr></thead>
-          <tbody id="sched-body" class="divide-y divide-mono-border text-sm"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TARIFS -->
-<section id="tarifs" class="py-14 sm:py-20 lg:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto">
-      <p class="text-mono-silver font-bold text-xs sm:text-sm uppercase tracking-widest">Tarifs associatifs</p>
-      <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase mt-2">Rejoignez le club</h2>
-      <p class="text-mono-silver mt-4">Des cotisations accessibles à tous grâce à notre statut associatif, pour vous entraîner toute l'année à Boucau.</p>
-      <div class="mt-7 flex sm:inline-flex w-full sm:w-auto p-1.5 rounded-xl glass border border-mono-border" role="tablist">
-        <button id="t-annual" role="tab" aria-selected="true" class="flex-1 sm:flex-none px-4 sm:px-6 py-3 rounded-lg text-sm font-bold bg-white text-black">Annuelle</button>
-        <button id="t-monthly" role="tab" aria-selected="false" class="flex-1 sm:flex-none px-4 sm:px-6 py-3 rounded-lg text-sm font-bold text-mono-silver">Mensuel / Trimestre</button>
-      </div>
-    </div>
-    <div id="annual-plans" class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-10 max-w-5xl mx-auto"></div>
-    <div id="monthly-plans" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-10 max-w-6xl mx-auto"></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="Contact" class="py-14 sm:py-20 lg:py-24 border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="glass rounded-3xl border border-mono-border overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
-
-      <div class="lg:col-span-5 order-2 lg:order-1 bg-black/60 border-t lg:border-t-0 lg:border-r border-mono-border flex flex-col justify-between">
-        <div class="md:grid md:grid-cols-2 lg:block">
-          <div class="relative h-44 md:h-full md:min-h-[260px] lg:h-56 overflow-hidden">
-            <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/entr-e-high.jpg?enable-io=true&width=900" onerror="this.src='https://placehold.co/800x450/111111/FFFFFF?text=Salle+SICSBT+Boucau'" alt="Entrée du SICSBT Musculation Boucau, place Manolo Perez" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-            <span class="absolute bottom-4 left-5 px-3 py-1 rounded-full bg-white text-black text-xs font-extrabold uppercase tracking-wider">Séance découverte offerte</span>
-          </div>
-          <div class="p-6 sm:p-8 lg:p-10">
-            <h2 class="font-display text-3xl sm:text-4xl font-bold uppercase leading-tight mb-3">Venez nous rencontrer</h2>
-            <p class="text-mono-silver text-sm leading-relaxed mb-5">Testez gratuitement la salle et découvrez nos équipements.</p>
-            <div class="space-y-4 text-sm text-mono-platinum">
-              <p class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 shrink-0 mt-0.5"></i><span><strong class="text-white">Place Manolo Perez, 64340 Boucau</strong><br><span class="text-xs text-mono-silver">Pyrénées-Atlantiques • Nouvelle-Aquitaine</span></span></p>
-              <p class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 shrink-0"></i><span><a href="tel:+33781386474" class="font-bold text-white hover:underline">07 81 38 64 74</a> <span class="text-xs text-mono-silver">(Olivier, président)</span></span></p>
-              <p class="flex items-center gap-3 break-all"><i data-lucide="mail" class="w-5 h-5 shrink-0"></i><a href="mailto:scisbt.muscu@gmail.com" class="text-white hover:underline">scisbt.muscu@gmail.com</a></p>
+                <div class="flex items-center gap-3">
+                    <nav class="hidden md:flex items-center space-x-8 mr-2">
+                        <a href="#accueil" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Accueil</a>
+                        <a href="#espaces" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Le club et le matériel</a>
+                        <a href="#planning" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Planning et cours</a>
+                        <a href="#Contact" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Contact</a>
+                    </nav>
+                    <a href="#tarifs" id="nav-cta" class="nav-cta inline-flex items-center px-4 sm:px-5 py-2.5 rounded-lg bg-white text-black text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-mono-platinum">Abonnement</a>
+                    <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="md:hidden p-2 rounded-lg text-white hover:bg-mono-card focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-7"></i>
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="px-6 sm:px-8 lg:px-10 pb-6">
-          <div class="rounded-xl overflow-hidden border border-mono-border">
-            <iframe title="Plan d'accès au SICSBT Musculation Boucau" src="https://maps.google.com/maps?q=Place+Manolo+Perez,+64340+Boucau&output=embed" width="100%" height="220" style="border:0;filter:grayscale(1) invert(.9) contrast(.9);" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-          </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-mono-card/80 backdrop-blur-md border-b border-mono-border px-4 pt-2 pb-6 space-y-2">
+            <a href="#accueil" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Accueil</a>
+            <a href="#espaces" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Le club et le matériel</a>
+            <a href="#planning" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Planning et cours</a>
+            <a href="#tarifs" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Abonnement</a>
+            <a href="#Contact" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Contact</a>
         </div>
-        <div class="px-6 sm:px-8 lg:px-10 py-5 border-t border-mono-border bg-mono-card/50 flex flex-wrap gap-x-5 gap-y-1 text-sm font-semibold">
-          <a href="https://www.instagram.com/sicsbtmuscuboucau" target="_blank" rel="noopener" class="inline-flex items-center gap-2 py-2 hover:text-mono-silver"><i data-lucide="instagram" class="w-4 h-4"></i>@sicsbtmuscuboucau</a>
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 py-2 hover:text-mono-silver"><i data-lucide="facebook" class="w-4 h-4"></i>Sicsbt Boucau Tarnos</a>
+    </header>
+
+    <!-- HERO -->
+    <section id="accueil" class="relative min-h-screen flex items-center pt-20">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-mono-card/80 backdrop-blur-md border border-white/25 text-white text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                    Association sportive • Boucau (64340)
+                </div>
+                <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-bold uppercase leading-[1.02] tracking-tight text-white mb-6">SICSBT Musculation</h1>
+                <p class="text-lg sm:text-xl text-mono-platinum mb-10 max-w-2xl leading-relaxed">
+                    Bienvenue au <strong class="text-white">SICSBT Musculation Boucau</strong>. Un espace associatif alliant passion, convivialité et performance, équipé pour la musculation, le cardio et le renforcement physique, quel que soit votre niveau.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#espaces" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-bold text-sm sm:text-base uppercase tracking-wider hover:bg-mono-platinum transition-all transform hover:-translate-y-1 shadow-xl shadow-white/10">
+                        Découvrir nos activités <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#tarifs" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-mono-card/80 backdrop-blur-md text-white border border-mono-border font-semibold text-sm sm:text-base uppercase tracking-wider hover:border-white hover:bg-mono-elevated transition-all">
+                        Abonnements et tarifs
+                    </a>
+                </div>
+                <div class="grid grid-cols-3 gap-6 mt-16 pt-8 border-t border-white/20 max-w-xl">
+                    <div><p class="font-display text-3xl sm:text-5xl font-bold text-white">100<span>%</span></p><p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Esprit associatif</p></div>
+                    <div><p class="font-display text-3xl sm:text-5xl font-bold text-white">64340</p><p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Place Manolo Perez</p></div>
+                    <div><p class="font-display text-3xl sm:text-5xl font-bold text-white">6J<span>/7</span></p><p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Accès adhérents</p></div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="lg:col-span-7 order-1 lg:order-2 p-5 sm:p-10 lg:p-12 flex flex-col justify-center">
-        <form id="trial-form" novalidate class="space-y-5">
-          <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            <div><label for="firstname" class="block text-xs font-bold uppercase tracking-wider mb-2">Prénom *</label>
-              <input type="text" id="firstname" placeholder="Votre prénom" required autocomplete="given-name" class="w-full px-4 py-3 rounded-xl bg-black border border-mono-border focus:outline-none focus:border-white">
-              <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez saisir votre prénom.</p></div>
-            <div><label for="lastname" class="block text-xs font-bold uppercase tracking-wider mb-2">Nom *</label>
-              <input type="text" id="lastname" placeholder="Votre nom" required autocomplete="family-name" class="w-full px-4 py-3 rounded-xl bg-black border border-mono-border focus:outline-none focus:border-white">
-              <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez saisir votre nom.</p></div>
-            <div><label for="email" class="block text-xs font-bold uppercase tracking-wider mb-2">Adresse e-mail *</label>
-              <input type="email" inputmode="email" autocapitalize="none" id="email" placeholder="prenom.nom@email.fr" required autocomplete="email" class="w-full px-4 py-3 rounded-xl bg-black border border-mono-border focus:outline-none focus:border-white">
-              <p class="error-msg hidden text-xs text-red-400 mt-1">Adresse e-mail invalide.</p></div>
-            <div><label for="phone" class="block text-xs font-bold uppercase tracking-wider mb-2">Téléphone *</label>
-              <input type="tel" inputmode="tel" id="phone" placeholder="06 12 34 56 78" required autocomplete="tel" class="w-full px-4 py-3 rounded-xl bg-black border border-mono-border focus:outline-none focus:border-white">
-              <p class="error-msg hidden text-xs text-red-400 mt-1">Un numéro valide (10 chiffres) est requis.</p></div>
-            <div><label for="formula" class="block text-xs font-bold uppercase tracking-wider mb-2">Objet / Formule souhaitée</label>
-              <select id="formula" class="w-full px-4 py-3 rounded-xl bg-black border border-mono-border focus:outline-none focus:border-white"></select></div>
-            <div><label for="preferred-date" class="block text-xs font-bold uppercase tracking-wider mb-2">Date souhaitée *</label>
-              <input type="date" id="preferred-date" required class="w-full px-4 py-3 rounded-xl bg-black border border-mono-border focus:outline-none focus:border-white">
-              <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez choisir une date valide.</p></div>
-          </div>
+    <!-- LE CLUB & MATÉRIEL -->
+    <section id="espaces" class="py-24 relative border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div class="flex items-start gap-3 pt-1">
-            <input type="checkbox" id="consent" required class="mt-0.5 w-6 h-6 shrink-0 accent-white">
-            <label for="consent" class="text-xs text-mono-silver leading-relaxed">J'accepte d'être recontacté par l'association SICSBT Musculation Boucau afin de confirmer mon rendez-vous ou mon inscription. *</label>
-          </div>
-          <p id="consent-error" class="hidden text-xs text-red-400">Veuillez cocher cette case pour valider votre demande.</p>
-          <p class="text-[11px] text-mono-silver leading-relaxed">Les informations saisies sont utilisées uniquement par l'association pour répondre à votre demande. Elles ne sont ni revendues ni conservées au-delà de la durée nécessaire. Pour exercer vos droits d'accès ou de suppression, écrivez à <a href="mailto:scisbt.muscu@gmail.com" class="underline text-white">scisbt.muscu@gmail.com</a>.</p>
-          <p id="submit-error" class="hidden text-sm text-red-400 text-center">L'envoi automatique a échoué. <a id="mailto-fallback" href="#" class="underline text-white font-semibold">Envoyer la demande avec votre application e-mail</a>, ou appelez le 07 81 38 64 74.</p>
+            <div class="bg-mono-card/80 backdrop-blur-md rounded-3xl border border-mono-border overflow-hidden mb-20 grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
+                <div class="lg:col-span-6 relative min-h-[320px] sm:min-h-[420px] overflow-hidden">
+                    <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/unnamed-high-n71xp3.jpg?enable-io=true&width=1200"
+                         onerror="this.src='https://placehold.co/1200x800/111111/FFFFFF?text=Association+SICSBT+Boucau'"
+                         alt="Une association sportive et locale à Boucau" class="w-full h-full object-cover transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mono-card via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-mono-card"></div>
+                </div>
+                <div class="lg:col-span-6 p-8 sm:p-12 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/pasted-image-wed-nov-04-2026-16-35-48-gmt-0100-heure-normale-d-europe-centrale-standard.png" alt="Emblème du SICSBT" class="w-9 h-9 object-contain">
+                        <span class="text-white font-bold text-xs uppercase tracking-[0.2em]">L'esprit du club</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold uppercase text-white leading-tight mb-5">Une association sportive et locale</h2>
+                    <p class="text-mono-platinum text-base leading-relaxed mb-6">
+                        Ici, la passion du sport prime : nos coachs et bénévoles s'investissent au quotidien pour transmettre les bonnes pratiques, accompagner chaque pratiquant en toute sécurité et créer une dynamique collective au cœur de Boucau.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-6 border-t border-mono-border">
+                        <div class="flex items-center gap-2.5 text-sm text-white font-medium"><i data-lucide="shield-check" class="w-5 h-5 text-white shrink-0"></i><span>Encadrement et conseils</span></div>
+                        <div class="flex items-center gap-2.5 text-sm text-white font-medium"><i data-lucide="users" class="w-5 h-5 text-white shrink-0"></i><span>Ambiance conviviale</span></div>
+                    </div>
+                </div>
+            </div>
 
-          <button type="submit" id="submit-btn" class="btn-w w-full py-4 px-6 rounded-xl text-sm shadow-lg shadow-white/10 flex items-center justify-center gap-2 disabled:opacity-60">
-            <span id="submit-label">Envoyer ma demande d'essai</span><i data-lucide="send" class="w-4 h-4"></i>
-          </button>
-        </form>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-mono-silver font-bold text-sm uppercase tracking-widest">Nos installations • Boucau</span>
+                <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase text-white mt-2">Notre matériel et nos espaces</h2>
+                <p class="text-mono-silver mt-4 text-base sm:text-lg">Des équipements complets et entretenus pour progresser en musculation, travailler votre cardio et préparer vos objectifs sportifs.</p>
+            </div>
 
-        <div id="confirmation-box" class="hidden text-center py-6 space-y-5" aria-live="polite">
-          <div class="w-16 h-16 rounded-full bg-white/15 border-2 border-white flex items-center justify-center mx-auto"><i data-lucide="check" class="w-8 h-8"></i></div>
-          <h3 class="font-display text-4xl font-bold uppercase">Demande envoyée !</h3>
-          <p id="confirmation-details" class="text-mono-platinum text-sm sm:text-base max-w-md mx-auto leading-relaxed break-words"></p>
-          <div class="bg-black border border-mono-border rounded-xl p-4 max-w-md mx-auto text-xs text-mono-silver">Rendez-vous place Manolo Perez, 64340 Boucau, avec une tenue de sport propre, une serviette et une bouteille d'eau.</div>
-          <button id="new-booking-btn" class="btn-o px-6 py-3.5 rounded-lg text-xs">Effectuer une nouvelle demande</button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group bg-mono-card/80 backdrop-blur-md rounded-2xl overflow-hidden border border-mono-border hover:border-white transition-all duration-300 flex flex-col shadow-xl">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/plateau-muscu-high.jpg?enable-io=true&width=1200"
+                             onerror="this.src='https://placehold.co/800x600/111111/FFFFFF?text=Plateau+Musculation'"
+                             alt="Plateau de musculation du SICSBT Boucau" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-mono-card via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 bg-white text-black px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider">01 • Force et volume</div>
+                    </div>
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-3 mb-3"><i data-lucide="dumbbell" class="w-6 h-6 text-white"></i><h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white">Plateau de musculation</h3></div>
+                        <p class="text-mono-silver text-sm leading-relaxed mb-6 flex-1">Des charges libres et des machines guidées pour travailler l'ensemble des groupes musculaires : bancs, racks à squat, haltères, poulies et postes convergents.</p>
+                        <ul class="space-y-2 text-sm text-mono-platinum border-t border-mono-border pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> Charges libres, barres et haltères</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> Machines guidées de haute précision</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="group bg-mono-card/80 backdrop-blur-md rounded-2xl overflow-hidden border border-mono-border hover:border-white transition-all duration-300 flex flex-col shadow-xl">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/cardio-high.jpg?enable-io=true&width=1200"
+                             onerror="this.src='https://placehold.co/800x600/111111/FFFFFF?text=Espace+Cardio'"
+                             alt="Espace cardio du SICSBT Boucau" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-mono-card via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 bg-mono-elevated text-white border border-white/30 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider">02 • Endurance et souffle</div>
+                    </div>
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-3 mb-3"><i data-lucide="heart-pulse" class="w-6 h-6 text-white"></i><h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white">Espace cardio</h3></div>
+                        <p class="text-mono-silver text-sm leading-relaxed mb-6 flex-1">Tapis de course, vélos et rameurs pour développer votre endurance cardiovasculaire, préparer vos échauffements et améliorer votre condition physique.</p>
+                        <ul class="space-y-2 text-sm text-mono-platinum border-t border-mono-border pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> Tapis, rameurs et vélos</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> Idéal pour la remise en forme</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="group bg-mono-card/80 backdrop-blur-md rounded-2xl overflow-hidden border border-mono-border hover:border-white transition-all duration-300 flex flex-col shadow-xl">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/entr-e-high.jpg?enable-io=true&width=1200"
+                             onerror="this.src='https://placehold.co/800x600/111111/FFFFFF?text=Entree+SICSBT+Boucau'"
+                             alt="Entrée et accueil du SICSBT Musculation Boucau" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-mono-card via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 bg-white text-black px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider">03 • Suivi et proximité</div>
+                    </div>
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-3 mb-3"><i data-lucide="flame" class="w-6 h-6 text-white"></i><h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white">Accueil et suivi</h3></div>
+                        <p class="text-mono-silver text-sm leading-relaxed mb-6 flex-1">Située place Manolo Perez, à Boucau, la salle vous accueille dans un cadre humain et motivant, avec des programmes personnalisés et un suivi technique.</p>
+                        <ul class="space-y-2 text-sm text-mono-platinum border-t border-mono-border pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> Conseils personnalisés pour débutants et confirmés</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> Préparation physique des sections SICSBT</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- BARRE D'ACTIONS MOBILE -->
-<div id="mobile-bar" class="md:hidden fixed bottom-0 inset-x-0 z-40 flex gap-2 px-3 pt-3 bg-black/90 border-t border-mono-border transition-transform duration-300" style="padding-bottom:calc(.75rem + env(safe-area-inset-bottom))">
-  <a href="tel:+33781386474" class="btn-o flex-1 inline-flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm"><i data-lucide="phone" class="w-4 h-4"></i>Appeler</a>
-  <a href="#Contact" class="btn-w flex-1 inline-flex items-center justify-center py-3.5 rounded-xl text-sm">Essai gratuit</a>
-</div>
+    <!-- PLANNING -->
+    <section id="planning" class="py-24 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-mono-silver font-bold text-sm uppercase tracking-widest">Créneaux encadrés et accès libre</span>
+                    <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase text-white mt-2">Planning et cours</h2>
+                </div>
+                <p class="text-mono-silver max-w-md text-sm sm:text-base">Filtrez par jour de la semaine pour organiser vos séances au SICSBT Musculation Boucau.</p>
+            </div>
 
-<!-- FOOTER -->
-<footer class="bg-black/80 border-t border-white/10 py-10 sm:py-14 text-sm text-mono-silver">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row items-center justify-between gap-7 pb-8 border-b border-mono-border text-center lg:text-left">
-      <div class="flex items-center gap-3.5">
-        <span class="w-11 h-11 bg-mono-card border border-mono-border rounded-xl flex items-center justify-center overflow-hidden p-1 shrink-0"><img src="logo_sans_fond.png" onerror="this.style.display='none'" alt="Logo du SICSBT Musculation Boucau" class="w-full h-full object-contain"></span>
-        <span class="text-left"><span class="font-display text-2xl font-bold tracking-wider text-white block leading-none uppercase">SICSBT Musculation</span><span class="text-xs">Place Manolo Perez, 64340 Boucau • Association sportive</span></span>
-      </div>
-      <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs uppercase tracking-wider font-semibold">
-        <a href="#accueil" class="py-2.5 hover:text-white">Accueil</a><a href="#espaces" class="py-2.5 hover:text-white">Le club et le matériel</a><a href="#planning" class="py-2.5 hover:text-white">Planning et cours</a><a href="#Contact" class="py-2.5 hover:text-white">Contact</a><a href="#tarifs" class="py-2.5 hover:text-white">Abonnement</a>
-      </nav>
-    </div>
-    <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-center sm:text-left">
-      <p>&copy; 2026 SICSBT Musculation Boucau. Tous droits réservés.</p>
-      <p class="text-white font-medium">07 81 38 64 74 • scisbt.muscu@gmail.com</p>
-    </div>
-  </div>
-</footer>
+            <div class="bg-mono-card/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-mono-border mb-8">
+                <label class="block text-xs font-bold uppercase tracking-wider text-white mb-3">Sélectionner un jour</label>
+                <div id="day-filters" class="flex flex-wrap gap-2">
+                    <button data-day="Tous" class="day-btn active px-4 py-2 rounded-lg text-sm bg-white text-black font-bold border border-mono-border hover:border-white transition-all">Tous</button>
+                    <button data-day="Lundi" class="day-btn px-4 py-2 rounded-lg text-sm font-semibold bg-mono-black text-mono-platinum border border-mono-border hover:border-white transition-all">Lundi</button>
+                    <button data-day="Mardi" class="day-btn px-4 py-2 rounded-lg text-sm font-semibold bg-mono-black text-mono-platinum border border-mono-border hover:border-white transition-all">Mardi</button>
+                    <button data-day="Mercredi" class="day-btn px-4 py-2 rounded-lg text-sm font-semibold bg-mono-black text-mono-platinum border border-mono-border hover:border-white transition-all">Mercredi</button>
+                    <button data-day="Jeudi" class="day-btn px-4 py-2 rounded-lg text-sm font-semibold bg-mono-black text-mono-platinum border border-mono-border hover:border-white transition-all">Jeudi</button>
+                    <button data-day="Vendredi" class="day-btn px-4 py-2 rounded-lg text-sm font-semibold bg-mono-black text-mono-platinum border border-mono-border hover:border-white transition-all">Vendredi</button>
+                    <button data-day="Samedi" class="day-btn px-4 py-2 rounded-lg text-sm font-semibold bg-mono-black text-mono-platinum border border-mono-border hover:border-white transition-all">Samedi</button>
+                </div>
+            </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const $ = (id) => document.getElementById(id);
-  const MAIL_TO = 'scisbt.muscu@gmail.com';
-  const FORM_ENDPOINT = `https://formsubmit.co/ajax/${MAIL_TO}`;
-  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const icons = () => lucide.createIcons();
-  const IMG = 'https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/';
-  const check = (cls) => `<i data-lucide="${cls}" class="w-5 h-5 shrink-0"></i>`;
+            <div id="schedule-table-wrapper" class="bg-mono-card/80 backdrop-blur-md rounded-2xl border border-mono-border overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-mono-elevated/90 border-b border-mono-border text-xs font-bold uppercase tracking-wider text-white">
+                                <th class="py-4 px-6">Jour et horaire</th>
+                                <th class="py-4 px-6">Séance</th>
+                                <th class="py-4 px-6">Discipline</th>
+                                <th class="py-4 px-6">Encadrement</th>
+                                <th class="py-4 px-6">Disponibilité</th>
+                                <th class="py-4 px-6 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-tbody" class="divide-y divide-mono-border text-sm"></tbody>
+                    </table>
+                </div>
+            </div>
 
-  /* 1. Menu */
-  const menu = $('menu'), mBtn = $('menu-btn');
-  const setMenu = (open) => {
-    menu.classList.toggle('hidden', !open);
-    mBtn.setAttribute('aria-expanded', open);
-    $('ic-open').classList.toggle('hidden', open);
-    $('ic-close').classList.toggle('hidden', !open);
-  };
-  mBtn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
-  document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => setMenu(false)));
-
-  /* La barre du bas se cache sur la section Contact */
-  const bar = $('mobile-bar');
-  if ('IntersectionObserver' in window)
-    new IntersectionObserver(([e]) => bar.classList.toggle('translate-y-full', e.isIntersecting), { threshold: .15 }).observe($('Contact'));
-
-  /* 2. Matériel */
-  const equip = [
-    { img:'plateau-muscu-high.jpg', alt:'Plateau de musculation du SICSBT Boucau', tag:'Force et volume', icon:'dumbbell', title:'Plateau de musculation', white:true,
-      text:'Des charges libres et des machines guidées pour travailler tous les groupes musculaires : bancs, racks à squat, haltères, poulies et postes convergents.', pts:['Charges libres, barres et haltères','Machines guidées de haute précision'] },
-    { img:'cardio-high.jpg', alt:'Espace cardio du SICSBT Boucau', tag:'Endurance et souffle', icon:'heart-pulse', title:'Espace cardio',
-      text:'Tapis de course, vélos et rameurs pour développer votre endurance, préparer vos échauffements et améliorer votre condition physique.', pts:['Tapis, rameurs et vélos','Idéal pour la remise en forme'] },
-    { img:'entr-e-high.jpg', alt:'Entrée et accueil du SICSBT Musculation Boucau', tag:'Suivi et proximité', icon:'flame', title:'Accueil et suivi', white:true, wide:true,
-      text:'Située place Manolo Perez, à Boucau, la salle vous accueille dans un cadre humain et motivant, avec des programmes personnalisés et un suivi technique.', pts:['Conseils personnalisés pour débutants et confirmés','Préparation physique des sections SICSBT'] }
-  ];
-  $('equip').innerHTML = equip.map(e => `
-    <article class="glass snap-center shrink-0 w-[84%] sm:w-[60%] md:w-auto rounded-2xl overflow-hidden border border-mono-border flex flex-col shadow-xl ${e.wide ? 'md:col-span-2 lg:col-span-1 md:grid md:grid-cols-2 lg:flex' : ''}">
-      <div class="relative h-48 sm:h-56 ${e.wide ? 'md:h-full lg:h-64' : 'md:h-60'} overflow-hidden">
-        <img src="${IMG}${e.img}?enable-io=true&width=900" onerror="this.src='https://placehold.co/800x600/111111/FFFFFF?text=${encodeURIComponent(e.title)}'" alt="${e.alt}" loading="lazy" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-mono-card via-transparent to-transparent"></div>
-        <span class="absolute bottom-3 left-3 px-3 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider ${e.white ? 'bg-white text-black' : 'bg-mono-elevated border border-white/30'}">${e.tag}</span>
-      </div>
-      <div class="p-5 sm:p-7 flex-1 flex flex-col">
-        <h3 class="flex items-center gap-3 font-display text-2xl sm:text-3xl font-bold uppercase mb-3"><i data-lucide="${e.icon}" class="w-6 h-6 shrink-0"></i>${e.title}</h3>
-        <p class="text-mono-silver text-sm leading-relaxed mb-5 flex-1">${e.text}</p>
-        <ul class="space-y-2 text-sm text-mono-platinum border-t border-mono-border pt-4">${e.pts.map(p => `<li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 mt-0.5 shrink-0"></i>${p}</li>`).join('')}</ul>
-      </div>
-    </article>`).join('');
-
-  /* 3. Planning */
-  const days = ['Tous','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-  const classes = [
-    { day:'Lundi', time:'09:30 - 10:30', title:'Circuit training', cat:'Musculation', coach:'Maxime', spots:'Ouvert' },
-    { day:'Mardi', free:true },
-    { day:'Mercredi', time:'09:30 - 10:30', title:'Circuit training', cat:'Musculation', coach:'Maxime', spots:'Ouvert' },
-    { day:'Jeudi', time:'09:30 - 10:30', title:'Stretching ou renforcement musculaire doux', cat:'Renforcement', coach:'Claire', spots:'Ouvert' },
-    { day:'Jeudi', time:'18:30 - 19:30', title:'Pilates', cat:'Renforcement', coach:'Claire', spots:'Ouvert' },
-    { day:'Jeudi', time:'19:30 - 20:15', title:'Stretching ou initiation à la musculation féminine', cat:'Renforcement', coach:'Claire', spots:'Ouvert' },
-    { day:'Vendredi', time:'09:30 - 10:30', title:'Renforcement musculaire', cat:'Renforcement', coach:'Claire', spots:'Ouvert' },
-    { day:'Samedi', free:true }
-  ];
-  const badge = (c) => c === 'Musculation' ? 'bg-mono-elevated border-white/40' : 'bg-white/15 border-white/30';
-  let sel = 'Tous';
-  const tryBtn = (extra='') => `<a href="#Contact" class="try-btn btn-w shrink-0 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-xs ${extra}">Essayer</a>`;
-
-  $('day-filters').innerHTML = days.map(d => `<button data-day="${d}" class="day-btn px-4 py-2 rounded-lg text-sm border border-mono-border transition-colors"></button>`).join('');
-  const dayBtns = [...document.querySelectorAll('.day-btn')];
-  dayBtns.forEach(b => b.textContent = b.dataset.day);
-
-  function renderSchedule() {
-    dayBtns.forEach(b => {
-      const on = b.dataset.day === sel;
-      b.className = `day-btn px-4 py-2 rounded-lg text-sm border border-mono-border transition-colors ${on ? 'bg-white text-black font-bold' : 'bg-black text-mono-platinum font-semibold'}`;
-      b.setAttribute('aria-pressed', on);
-    });
-    const list = classes.filter(c => sel === 'Tous' || c.day === sel);
-
-    $('sched-body').innerHTML = list.map(c => c.free ? `
-      <tr class="hover:bg-mono-elevated/80"><td class="py-4 px-6 font-bold">${c.day}</td>
-      <td colspan="4" class="py-4 px-6 text-mono-silver italic">Accès libre à la salle, aucun cours encadré ce jour-là.</td>
-      <td class="py-4 px-6 text-right">${tryBtn()}</td></tr>` : `
-      <tr class="hover:bg-mono-elevated/80">
-        <td class="py-4 px-6 whitespace-nowrap"><span class="font-bold block">${c.day}</span><span class="text-xs text-mono-silver">${c.time}</span></td>
-        <td class="py-4 px-6 font-display text-lg uppercase tracking-wide">${c.title}</td>
-        <td class="py-4 px-6 whitespace-nowrap"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold border ${badge(c.cat)}">${c.cat}</span></td>
-        <td class="py-4 px-6 text-mono-silver">${c.coach}</td>
-        <td class="py-4 px-6 text-xs font-semibold">${c.spots}</td>
-        <td class="py-4 px-6 text-right">${tryBtn()}</td></tr>`).join('');
-
-    $('sched-cards').innerHTML = list.map(c => c.free ? `
-      <div class="bg-mono-card p-4 sm:p-5 flex items-center justify-between gap-3">
-        <div><span class="font-bold block">${c.day}</span><span class="text-xs text-mono-silver italic">Accès libre, pas de cours encadré.</span></div>${tryBtn()}
-      </div>` : `
-      <div class="bg-mono-card p-4 sm:p-5 flex flex-col gap-2.5">
-        <div class="flex items-center justify-between gap-2">
-          <span class="font-bold">${c.day} <span class="text-xs text-mono-silver font-medium ml-1">${c.time}</span></span>
-          <span class="px-3 py-1 rounded-full text-xs font-bold border whitespace-nowrap ${badge(c.cat)}">${c.cat}</span>
+            <div id="empty-schedule" class="hidden text-center py-12 bg-mono-card/80 backdrop-blur-md rounded-2xl border border-mono-border">
+                <i data-lucide="calendar-x" class="w-12 h-12 text-white mx-auto mb-3"></i>
+                <p class="text-mono-platinum font-medium">Aucun créneau ne correspond à cette sélection.</p>
+                <button id="reset-filters-btn" class="mt-4 px-5 py-2 rounded-lg bg-white text-black text-sm font-bold hover:bg-mono-platinum transition-colors">Réinitialiser le filtre</button>
+            </div>
         </div>
-        <p class="font-display text-lg uppercase leading-snug flex-1">${c.title}</p>
-        <div class="flex items-center justify-between gap-3"><span class="text-xs text-mono-silver">Avec ${c.coach} • ${c.spots}</span>${tryBtn()}</div>
-      </div>`).join('');
+    </section>
 
-    document.querySelectorAll('.try-btn').forEach(b => b.addEventListener('click', () => { $('formula').value = "Séance d'essai gratuite"; }));
-  }
-  dayBtns.forEach(b => b.addEventListener('click', () => { sel = b.dataset.day; renderSchedule(); }));
-  renderSchedule();
+    <!-- TARIFS -->
+    <section id="tarifs" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-mono-silver font-bold text-sm uppercase tracking-widest">Tarifs associatifs</span>
+                <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase text-white mt-2">Rejoignez le club</h2>
+                <p class="text-mono-silver mt-4">Des cotisations accessibles à tous grâce à notre statut associatif, pour vous entraîner toute l'année à Boucau.</p>
 
-  /* 4. Tarifs */
-  const feats = ["Accès complet au plateau de musculation et à l'espace cardio","Conseils techniques et programme de départ","Programme d'entraînement personnalisé offert"];
-  const plan = (p) => `
-    <article class="glass rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-transform duration-300 md:hover:-translate-y-1 relative ${p.main ? 'border-2 border-white shadow-2xl shadow-white/10 order-first md:order-none' : 'border border-mono-border'} ${p.span ? 'md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full' : ''}">
-      ${p.main ? `<span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest whitespace-nowrap">${p.main}</span>` : ''}
-      <div>
-        <div class="flex justify-between items-center gap-2 mb-2">
-          <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase">${p.name}</h3>
-          ${p.badge ? `<span class="px-3 py-1 rounded-full bg-mono-elevated border border-mono-border text-xs font-bold whitespace-nowrap">${p.badge}</span>` : ''}
+                <div class="mt-8 inline-flex items-center p-1.5 rounded-xl bg-mono-card/80 backdrop-blur-md border border-mono-border">
+                    <button id="btn-annual" class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all bg-white text-black flex items-center gap-2">
+                        Cotisation annuelle
+                        <span class="px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full bg-black text-white font-extrabold">Avantage</span>
+                    </button>
+                    <button id="btn-monthly" class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-mono-silver hover:text-white">Mensuel / Trimestre</button>
+                </div>
+            </div>
+
+            <!-- ANNUEL -->
+            <div id="annual-plans" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mt-12 max-w-5xl mx-auto">
+                <div class="bg-mono-card/80 backdrop-blur-md rounded-2xl p-8 border border-mono-border flex flex-col justify-between hover:border-white/60 transition-all duration-300 hover:-translate-y-2">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white">Licencié au SICSBT</h3>
+                            <span class="px-3 py-1 rounded-full bg-mono-elevated text-white border border-mono-border text-xs font-bold">Tarif réduit</span>
+                        </div>
+                        <p class="text-mono-silver text-sm mb-6">Réservé aux licenciés d'une autre section du SICSBT.</p>
+                        <div class="mb-8 pb-6 border-b border-mono-border">
+                            <div class="flex items-baseline gap-1"><span class="font-display text-6xl font-bold text-white">170</span><span class="text-2xl font-bold text-white">€</span><span class="text-mono-silver text-sm">/ an</span></div>
+                            <p class="text-xs text-mono-silver mt-1">Soit environ 14,17 €/mois • Sans engagement</p>
+                        </div>
+                        <ul class="space-y-4 text-sm text-mono-platinum mb-8">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Accès complet au plateau de musculation et à l'espace cardio</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Conseils techniques et programme de départ</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Programme d'entraînement personnalisé offert</span></li>
+                        </ul>
+                    </div>
+                    <a href="#Contact" data-plan="Licencié SICSBT" class="select-plan-btn w-full py-3.5 px-6 rounded-xl bg-mono-elevated hover:bg-white hover:text-black text-white border border-mono-border font-bold text-sm uppercase tracking-wider text-center transition-all">S'inscrire au tarif réduit</a>
+                </div>
+
+                <div class="bg-mono-card/80 backdrop-blur-md rounded-2xl p-8 border-2 border-white relative flex flex-col justify-between shadow-2xl shadow-white/10 transition-all duration-300 hover:-translate-y-2">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest shadow-md">Adhésion principale</div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white">Adhésion club</h3>
+                            <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold">Tout inclus</span>
+                        </div>
+                        <p class="text-mono-silver text-sm mb-6">L'adhésion associative complète pour profiter librement de l'ensemble de la salle toute l'année.</p>
+                        <div class="mb-8 pb-6 border-b border-mono-border">
+                            <div class="flex items-baseline gap-1"><span class="font-display text-6xl font-bold text-white">190</span><span class="text-2xl font-bold text-white">€</span><span class="text-mono-silver text-sm">/ an</span></div>
+                            <p class="text-xs text-mono-silver mt-1">Soit environ 15,83 €/mois • Sans engagement</p>
+                        </div>
+                        <ul class="space-y-4 text-sm text-white mb-8">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Accès complet au plateau de musculation et à l'espace cardio</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Conseils techniques et programme de départ</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Programme d'entraînement personnalisé offert</span></li>
+                        </ul>
+                    </div>
+                    <a href="#Contact" data-plan="Adhésion Club Annuelle" class="select-plan-btn w-full py-4 px-6 rounded-xl bg-white hover:bg-mono-platinum text-black font-extrabold text-sm uppercase tracking-wider text-center transition-all shadow-lg shadow-white/15">Rejoindre le SICSBT Musculation</a>
+                </div>
+            </div>
+
+            <!-- MENSUEL / TRIMESTRE / 6 MOIS -->
+            <div id="monthly-plans" class="hidden grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mt-12 max-w-6xl mx-auto">
+                <div class="bg-mono-card/80 backdrop-blur-md rounded-2xl p-8 border border-mono-border flex flex-col justify-between hover:border-white/60 transition-all duration-300 hover:-translate-y-2">
+                    <div>
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white mb-2">Mensuel</h3>
+                        <p class="text-mono-silver text-sm mb-6">Pour découvrir la salle ou vous entraîner à votre rythme.</p>
+                        <div class="mb-8 pb-6 border-b border-mono-border">
+                            <div class="flex items-baseline gap-1"><span class="font-display text-6xl font-bold text-white">30</span><span class="text-2xl font-bold text-white">€</span><span class="text-mono-silver text-sm">/ mois</span></div>
+                            <p class="text-xs text-mono-silver mt-1">1 mois • Sans engagement</p>
+                        </div>
+                        <ul class="space-y-4 text-sm text-mono-platinum mb-8">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Accès complet au plateau de musculation et à l'espace cardio</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Conseils techniques et programme de départ</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Programme d'entraînement personnalisé offert</span></li>
+                        </ul>
+                    </div>
+                    <a href="#Contact" data-plan="Adhésion Club mensuel" class="select-plan-btn w-full py-3.5 px-6 rounded-xl bg-mono-elevated hover:bg-white hover:text-black text-white border border-mono-border font-bold text-sm uppercase tracking-wider text-center transition-all">Choisir la formule mensuelle</a>
+                </div>
+
+                <div class="bg-mono-card/80 backdrop-blur-md rounded-2xl p-8 border-2 border-white relative flex flex-col justify-between shadow-2xl shadow-white/10 transition-all duration-300 hover:-translate-y-2">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest shadow-md">Populaire</div>
+                    <div>
+                        <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white mb-2">6 mois</h3>
+                        <p class="text-mono-silver text-sm mb-6">Un tarif avantageux pour progresser sur la durée.</p>
+                        <div class="mb-8 pb-6 border-b border-mono-border">
+                            <div class="flex items-baseline gap-1"><span class="font-display text-6xl font-bold text-white">120</span><span class="text-2xl font-bold text-white">€</span><span class="text-mono-silver text-sm">/ 6 mois</span></div>
+                            <p class="text-xs text-mono-silver mt-1">Soit 20 €/mois • Sans engagement</p>
+                        </div>
+                        <ul class="space-y-4 text-sm text-white mb-8">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Accès complet au plateau de musculation et à l'espace cardio</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Conseils techniques et programme de départ</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Programme d'entraînement personnalisé offert</span></li>
+                        </ul>
+                    </div>
+                    <a href="#Contact" data-plan="Adhésion Club 6 mois" class="select-plan-btn w-full py-4 px-6 rounded-xl bg-white hover:bg-mono-platinum text-black font-extrabold text-sm uppercase tracking-wider text-center transition-all shadow-lg shadow-white/15">Choisir la formule 6 mois</a>
+                </div>
+
+                <div class="bg-mono-card/80 backdrop-blur-md rounded-2xl p-8 border border-mono-border flex flex-col justify-between hover:border-white/60 transition-all duration-300 hover:-translate-y-2">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase text-white">Trimestriel</h3>
+                            <span class="px-3 py-1 rounded-full bg-mono-elevated text-white border border-mono-border text-xs font-bold">Meilleur prix</span>
+                        </div>
+                        <p class="text-mono-silver text-sm mb-6">3 mois pour installer une véritable routine.</p>
+                        <div class="mb-8 pb-6 border-b border-mono-border">
+                            <div class="flex items-baseline gap-1"><span class="font-display text-6xl font-bold text-white">90</span><span class="text-2xl font-bold text-white">€</span><span class="text-mono-silver text-sm">/ 3 mois</span></div>
+                            <p class="text-xs text-mono-silver mt-1">Soit 30 €/mois • Sans engagement</p>
+                        </div>
+                        <ul class="space-y-4 text-sm text-mono-platinum mb-8">
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Accès complet au plateau de musculation et à l'espace cardio</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Conseils techniques et programme de départ</span></li>
+                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-white shrink-0"></i><span>Programme d'entraînement personnalisé offert</span></li>
+                        </ul>
+                    </div>
+                    <a href="#Contact" data-plan="Adhésion Club trimestriel" class="select-plan-btn w-full py-3.5 px-6 rounded-xl bg-mono-elevated hover:bg-white hover:text-black text-white border border-mono-border font-bold text-sm uppercase tracking-wider text-center transition-all">Choisir la formule trimestrielle</a>
+                </div>
+            </div>
         </div>
-        <p class="text-mono-silver text-sm mb-5">${p.desc}</p>
-        <div class="mb-6 pb-5 border-b border-mono-border">
-          <p class="flex items-baseline gap-1"><span class="font-display text-6xl font-bold">${p.price}</span><span class="text-2xl font-bold">€</span><span class="text-mono-silver text-sm">/ ${p.unit}</span></p>
-          <p class="text-xs text-mono-silver mt-1">${p.sub} • Sans engagement</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="Contact" class="py-24 relative overflow-hidden border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-mono-card/80 backdrop-blur-md rounded-3xl border border-mono-border overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
+
+                <div class="lg:col-span-5 bg-mono-black/60 border-b lg:border-b-0 lg:border-r border-mono-border flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/entr-e-high.jpg?enable-io=true&width=1200"
+                                 onerror="this.src='https://placehold.co/800x450/111111/FFFFFF?text=Salle+SICSBT+Boucau'"
+                                 alt="Entrée du SICSBT Musculation Boucau, place Manolo Perez" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-mono-black via-mono-black/40 to-transparent"></div>
+                            <span class="absolute bottom-4 left-6 inline-block px-3 py-1 rounded-full bg-white text-black text-xs font-extrabold uppercase tracking-wider">Séance découverte offerte</span>
+                        </div>
+
+                        <div class="p-8 sm:p-10">
+                            <h2 class="font-display text-4xl font-bold uppercase text-white leading-tight mb-3">Venez nous rencontrer</h2>
+                            <p class="text-mono-silver text-sm leading-relaxed mb-6">Testez gratuitement la salle et découvrez nos équipements.</p>
+
+                            <div class="space-y-4 text-sm text-mono-platinum">
+                                <p class="flex items-start gap-3">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-white shrink-0 mt-0.5"></i>
+                                    <span><strong class="text-white">Place Manolo Perez, 64340 Boucau</strong><br><span class="text-xs text-mono-silver">Pyrénées-Atlantiques • Nouvelle-Aquitaine</span></span>
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i data-lucide="phone" class="w-5 h-5 text-white shrink-0"></i>
+                                    <span><a href="tel:+33781386474" class="font-bold text-white hover:underline">07 81 38 64 74</a> <span class="text-xs text-mono-silver">(Olivier — Président)</span></span>
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i data-lucide="mail" class="w-5 h-5 text-white shrink-0"></i>
+                                    <a href="mailto:scisbt.muscu@gmail.com" class="text-white hover:underline">scisbt.muscu@gmail.com</a>
+                                </p>
+                            </div>
+
+                            <div class="mt-6 rounded-xl overflow-hidden border border-mono-border">
+                                <iframe title="Plan d'accès au SICSBT Musculation Boucau"
+                                    src="https://maps.google.com/maps?q=Place+Manolo+Perez,+64340+Boucau&output=embed"
+                                    width="100%" height="200" style="border:0;filter:grayscale(1) invert(.9) contrast(.9);"
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-8 sm:px-10 py-6 border-t border-mono-border bg-mono-card/50 flex flex-wrap items-center gap-4 text-xs text-mono-silver">
+                        <!-- À remplacer par les vrais liens des comptes du club -->
+                        <a href="https://www.instagram.com/sicsbtmuscuboucau" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-white hover:text-mono-silver transition-colors font-semibold">
+                            <i data-lucide="instagram" class="w-4 h-4"></i> @sicsbtmuscuboucau
+                        </a>
+                        <span>•</span>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-white hover:text-mono-silver transition-colors font-semibold">
+                            <i data-lucide="facebook" class="w-4 h-4"></i> Sicsbt Boucau Tarnos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-center">
+                    <form id="trial-form" novalidate class="space-y-5">
+                        <!-- Champ anti-spam : il doit rester vide et invisible -->
+                        <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off"
+                               style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="firstname" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Prénom *</label>
+                                <input type="text" id="firstname" name="firstname" placeholder="Votre prénom" required autocomplete="given-name"
+                                    class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                                <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez saisir votre prénom.</p>
+                            </div>
+                            <div>
+                                <label for="lastname" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Nom *</label>
+                                <input type="text" id="lastname" name="lastname" placeholder="Votre nom" required autocomplete="family-name"
+                                    class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                                <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez saisir votre nom.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Adresse e-mail *</label>
+                                <input type="email" id="email" name="email" placeholder="prenom.nom@email.fr" required autocomplete="email"
+                                    class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                                <p class="error-msg hidden text-xs text-red-400 mt-1">Adresse e-mail invalide.</p>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Téléphone *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required autocomplete="tel"
+                                    class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                                <p class="error-msg hidden text-xs text-red-400 mt-1">Un numéro de téléphone valide (10 chiffres) est requis.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="formula" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Objet / Formule souhaitée</label>
+                                <select id="formula" name="formula" class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white focus:outline-none focus:border-white transition-colors">
+                                    <option value="Séance d'essai gratuite">Séance d'essai gratuite</option>
+                                    <option value="Adhésion Club Annuelle">Adhésion club annuelle (190 €)</option>
+                                    <option value="Licencié SICSBT">Tarif licencié SICSBT (170 €)</option>
+                                    <option value="Adhésion Club mensuel">Adhésion club mensuelle (30 €)</option>
+                                    <option value="Adhésion Club trimestriel">Adhésion club trimestrielle (90 €)</option>
+                                    <option value="Adhésion Club 6 mois">Adhésion club 6 mois (120 €)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="preferred-date" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Date souhaitée *</label>
+                                <input type="date" id="preferred-date" name="preferred-date" required
+                                    class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white focus:outline-none focus:border-white transition-colors">
+                                <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez choisir une date valide.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 pt-2">
+                            <input type="checkbox" id="consent" required class="mt-1 w-4 h-4 accent-white rounded bg-mono-black border-mono-border">
+                            <label for="consent" class="text-xs text-mono-silver leading-relaxed">
+                                J'accepte d'être recontacté par l'association SICSBT Musculation Boucau afin de confirmer mon rendez-vous ou mon inscription. *
+                            </label>
+                        </div>
+                        <p id="consent-error" class="hidden text-xs text-red-400">Veuillez cocher cette case pour valider votre demande.</p>
+
+                        <p class="text-[11px] text-mono-silver leading-relaxed">
+                            Les informations saisies sont utilisées uniquement par l'association pour répondre à votre demande. Elles ne sont ni revendues ni conservées au-delà de la durée nécessaire à ce traitement.
+                            Pour exercer vos droits d'accès ou de suppression, écrivez à <a href="mailto:scisbt.muscu@gmail.com" class="underline text-white">scisbt.muscu@gmail.com</a>.
+                        </p>
+
+                        <p id="submit-error" class="hidden text-sm text-red-400 text-center">
+                            L'envoi automatique a échoué.
+                            <a id="mailto-fallback" href="#" class="underline text-white font-semibold">Cliquez ici pour envoyer la demande avec votre application e-mail</a>,
+                            ou appelez le 07 81 38 64 74.
+                        </p>
+
+                        <button type="submit" id="submit-btn"
+                            class="w-full py-4 px-6 rounded-xl bg-white hover:bg-mono-platinum text-black font-extrabold text-sm uppercase tracking-wider transition-all transform hover:-translate-y-0.5 shadow-lg shadow-white/10 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+                            <span id="submit-label">Envoyer ma demande d'essai</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+
+                    <div id="confirmation-box" class="hidden text-center py-8 px-4 space-y-5">
+                        <div class="w-16 h-16 rounded-full bg-white/15 border-2 border-white flex items-center justify-center mx-auto">
+                            <i data-lucide="check" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="font-display text-4xl font-bold uppercase text-white">Demande envoyée !</h3>
+                        <p id="confirmation-details" class="text-mono-platinum text-sm sm:text-base max-w-md mx-auto leading-relaxed"></p>
+                        <div class="bg-mono-black border border-mono-border rounded-xl p-4 max-w-md mx-auto text-xs text-mono-silver">
+                            Rendez-vous place Manolo Perez, 64340 Boucau, avec une tenue de sport propre, une serviette et une bouteille d'eau.
+                        </div>
+                        <button id="new-booking-btn" class="mt-4 px-6 py-2.5 rounded-lg border border-mono-border text-white hover:border-white text-xs font-bold uppercase tracking-wider transition-colors">
+                            Effectuer une nouvelle demande
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul class="space-y-3.5 text-sm mb-7">${feats.map(f => `<li class="flex items-start gap-3">${check('check-circle-2')}<span>${f}</span></li>`).join('')}</ul>
-      </div>
-      <a href="#Contact" data-plan="${p.key}" class="select-plan ${p.main ? 'btn-w shadow-lg shadow-white/15' : 'btn-o'} w-full py-4 px-6 rounded-xl text-sm text-center">${p.cta}</a>
-    </article>`;
-  $('annual-plans').innerHTML = [
-    { key:'Licencié SICSBT', name:'Licencié au SICSBT', badge:'Tarif réduit', desc:'Réservé aux licenciés d\'une autre section du SICSBT.', price:170, unit:'an', sub:'Soit environ 14,17 €/mois', cta:'S\'inscrire au tarif réduit' },
-    { key:'Adhésion Club Annuelle', name:'Adhésion club', badge:'Tout inclus', main:'Adhésion principale', desc:'L\'adhésion complète pour profiter librement de toute la salle toute l\'année.', price:190, unit:'an', sub:'Soit environ 15,83 €/mois', cta:'Rejoindre le SICSBT Musculation' }
-  ].map(plan).join('');
-  $('monthly-plans').innerHTML = [
-    { key:'Adhésion Club mensuel', name:'Mensuel', desc:'Pour découvrir la salle ou vous entraîner à votre rythme.', price:30, unit:'mois', sub:'1 mois', cta:'Choisir la formule mensuelle' },
-    { key:'Adhésion Club 6 mois', name:'6 mois', main:'Populaire', desc:'Un tarif avantageux pour progresser sur la durée.', price:120, unit:'6 mois', sub:'Soit 20 €/mois', cta:'Choisir la formule 6 mois' },
-    { key:'Adhésion Club trimestriel', name:'Trimestriel', badge:'Meilleur prix', span:true, desc:'3 mois pour installer une véritable routine.', price:90, unit:'3 mois', sub:'Soit 30 €/mois', cta:'Choisir la formule trimestrielle' }
-  ].map(plan).join('');
+    </section>
 
-  const setTab = (annual) => {
-    $('t-annual').className = `flex-1 sm:flex-none px-4 sm:px-6 py-3 rounded-lg text-sm font-bold ${annual ? 'bg-white text-black' : 'text-mono-silver'}`;
-    $('t-monthly').className = `flex-1 sm:flex-none px-4 sm:px-6 py-3 rounded-lg text-sm font-bold ${annual ? 'text-mono-silver' : 'bg-white text-black'}`;
-    $('t-annual').setAttribute('aria-selected', annual); $('t-monthly').setAttribute('aria-selected', !annual);
-    $('annual-plans').classList.toggle('hidden', !annual); $('monthly-plans').classList.toggle('hidden', annual);
-  };
-  $('t-annual').addEventListener('click', () => setTab(true));
-  $('t-monthly').addEventListener('click', () => setTab(false));
+    <!-- FOOTER -->
+    <footer class="bg-mono-black/80 backdrop-blur-md border-t border-white/10 py-14 text-sm text-mono-silver">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-mono-border">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 bg-mono-card border border-mono-border rounded-xl flex items-center justify-center overflow-hidden p-1">
+                        <img src="https://primary.jwwb.nl/public/x/c/h/temp-ksojudsutndjxobjiatz/pasted-image-wed-nov-04-2026-16-35-48-gmt-0100-heure-normale-d-europe-centrale-standard.png" alt="Logo du SICSBT Musculation Boucau" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span class="font-display text-2xl font-bold tracking-wider text-white block leading-none uppercase">SICSBT <span class="text-mono-silver">MUSCULATION</span></span>
+                        <span class="text-xs text-mono-silver">Place Manolo Perez, 64340 Boucau • Association sportive</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-mono-silver">
+                    <a href="#accueil" class="hover:text-white transition-colors">Accueil</a>
+                    <a href="#espaces" class="hover:text-white transition-colors">Le club et le matériel</a>
+                    <a href="#planning" class="hover:text-white transition-colors">Planning et cours</a>
+                    <a href="#tarifs" class="hover:text-white transition-colors">Abonnement</a>
+                    <a href="#Contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-mono-silver">
+                <p>&copy; 2026 SICSBT Musculation Boucau — Tous droits réservés.</p>
+                <p class="text-white font-medium">07 81 38 64 74 • scisbt.muscu@gmail.com</p>
+            </div>
+        </div>
+    </footer>
 
-  /* 5. Formulaire */
-  const formulas = [["Séance d'essai gratuite","Séance d'essai gratuite"],['Adhésion Club Annuelle','Adhésion club annuelle (190 €)'],['Licencié SICSBT','Tarif licencié SICSBT (170 €)'],['Adhésion Club mensuel','Adhésion club mensuelle (30 €)'],['Adhésion Club trimestriel','Adhésion club trimestrielle (90 €)'],['Adhésion Club 6 mois','Adhésion club 6 mois (120 €)']];
-  $('formula').innerHTML = formulas.map(([v,l]) => `<option value="${v}">${l}</option>`).join('');
-  document.querySelectorAll('.select-plan').forEach(b => b.addEventListener('click', () => { $('formula').value = b.dataset.plan; }));
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
 
-  const form = $('trial-form'), dateIn = $('preferred-date'), btn = $('submit-btn'), label = $('submit-label'), subErr = $('submit-error');
-  const fmt = (dt) => `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
-  const now = new Date(), tomorrow = new Date(now.getTime() + 864e5);
-  dateIn.min = fmt(now); dateIn.value = fmt(tomorrow);
-  const TXT = "Envoyer ma demande d'essai";
+            /* Adresse qui reçoit les demandes (via FormSubmit) — à vérifier */
+            const MAIL_TO = 'scisbt.muscu@gmail.com';
+            const FORM_ENDPOINT = `https://formsubmit.co/ajax/${MAIL_TO}`;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let ok = true;
-    const bad = (input, cond) => {
-      const msg = input.parentElement.querySelector('.error-msg');
-      input.classList.toggle('border-red-500', cond); if (msg) msg.classList.toggle('hidden', !cond);
-      if (cond) ok = false;
-    };
-    const f = $('firstname'), l = $('lastname'), m = $('email'), p = $('phone'), c = $('consent');
-    bad(f, f.value.trim().length < 2); bad(l, l.value.trim().length < 2);
-    bad(m, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.value.trim()));
-    bad(p, p.value.replace(/\D/g,'').length < 10); bad(dateIn, !dateIn.value);
-    $('consent-error').classList.toggle('hidden', c.checked); if (!c.checked) ok = false;
-    if (!ok) { (form.querySelector('.border-red-500') || c).scrollIntoView({ behavior:'smooth', block:'center' }); return; }
-    if ($('honey').value) return;
+            const escapeHTML = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-    btn.disabled = true; label.textContent = 'Envoi en cours…'; subErr.classList.add('hidden');
-    const [y, mo, d] = dateIn.value.split('-').map(Number);
-    const date = new Date(y, mo-1, d).toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-    const formula = $('formula').value;
-    const payload = { _subject:`Nouvelle demande SICSBT Musculation : ${formula}`, _template:'table', _captcha:'false', _replyto:m.value.trim(),
-      'Prénom':f.value.trim(), 'Nom':l.value.trim(), 'email':m.value.trim(), 'Téléphone':p.value.trim(), 'Formule':formula, 'Date souhaitée':date, 'Consentement':"Oui, j'accepte d'être recontacté(e)" };
-    const body = [`Prénom : ${payload['Prénom']}`,`Nom : ${payload['Nom']}`,`E-mail : ${payload.email}`,`Téléphone : ${payload['Téléphone']}`,`Formule : ${formula}`,`Date souhaitée : ${date}`].join('\n');
-    $('mailto-fallback').href = `mailto:${MAIL_TO}?subject=${encodeURIComponent('Demande SICSBT Musculation : ' + formula)}&body=${encodeURIComponent(body)}`;
+            /* 0. Animation des boutons d'abonnement */
+            document.querySelectorAll('.nav-cta').forEach(cta => {
+                cta.addEventListener('click', () => { cta.classList.remove('clicked'); void cta.offsetWidth; cta.classList.add('clicked'); });
+                cta.addEventListener('animationend', () => cta.classList.remove('clicked'));
+            });
 
-    try {
-      const ctrl = new AbortController(), timer = setTimeout(() => ctrl.abort(), 15000);
-      const res = await fetch(FORM_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json', 'Accept':'application/json' }, body:JSON.stringify(payload), signal:ctrl.signal });
-      clearTimeout(timer);
-      let data = {}; try { data = await res.json(); } catch (_) {}
-      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Envoi refusé');
-      $('confirmation-details').innerHTML = `Merci <strong class="text-white">${esc(f.value.trim())} ${esc(l.value.trim())}</strong> ! Votre demande (<span class="text-white font-semibold underline">${esc(formula)}</span>) pour le <strong class="text-white">${esc(date)}</strong> a bien été envoyée. Nous vous recontacterons rapidement à <span class="underline">${esc(m.value.trim())}</span> ou au <strong class="text-white">${esc(p.value.trim())}</strong>.`;
-      form.classList.add('hidden'); $('confirmation-box').classList.remove('hidden');
-      $('confirmation-box').scrollIntoView({ behavior:'smooth', block:'center' }); icons();
-    } catch (err) {
-      console.error(err); subErr.classList.remove('hidden');
-      setTimeout(() => subErr.scrollIntoView({ behavior:'smooth', block:'center' }), 50);
-    } finally { btn.disabled = false; label.textContent = TXT; }
-  });
-  $('new-booking-btn').addEventListener('click', () => { form.reset(); dateIn.value = fmt(tomorrow); $('confirmation-box').classList.add('hidden'); form.classList.remove('hidden'); });
+            /* 1. Menu mobile */
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-  icons();
-});
-</script>
+            /* 2. Planning filtrable */
+            const classesData = [
+                { day: 'Lundi', time: '09:30 - 10:30', title: 'Circuit training', category: 'Musculation', coach: 'Maxime', spots: 'Ouvert' },
+                { day: 'Mardi', free: true },
+                { day: 'Mercredi', time: '09:30 - 10:30', title: 'Circuit training', category: 'Musculation', coach: 'Maxime', spots: 'Ouvert' },
+                { day: 'Jeudi', time: '09:30 - 10:30', title: 'Stretching ou renforcement musculaire doux', category: 'Renforcement', coach: 'Claire', spots: 'Ouvert' },
+                { day: 'Jeudi', time: '18:30 - 19:30', title: 'Pilates', category: 'Renforcement', coach: 'Claire', spots: 'Ouvert' },
+                { day: 'Jeudi', time: '19:30 - 20:15', title: 'Stretching ou initiation à la musculation féminine', category: 'Renforcement', coach: 'Claire', spots: 'Ouvert' },
+                { day: 'Vendredi', time: '09:30 - 10:30', title: 'Renforcement musculaire', category: 'Renforcement', coach: 'Claire', spots: 'Ouvert' },
+                { day: 'Samedi', free: true },
+            ];
+
+            let selectedDay = 'Tous';
+            const scheduleTbody = document.getElementById('schedule-tbody');
+            const scheduleTableWrapper = document.getElementById('schedule-table-wrapper');
+            const emptySchedule = document.getElementById('empty-schedule');
+            const dayButtons = document.querySelectorAll('.day-btn');
+            const resetFiltersBtn = document.getElementById('reset-filters-btn');
+
+            const badge = (cat) => cat === 'Musculation' ? 'bg-mono-elevated text-white border-white/40'
+                                 : cat === 'Renforcement' ? 'bg-white/15 text-white border-white/30'
+                                 : 'bg-mono-black text-mono-silver border-mono-border';
+
+            function setActiveDay(btn) {
+                dayButtons.forEach(b => {
+                    b.classList.remove('active', 'bg-white', 'text-black', 'font-bold');
+                    b.classList.add('bg-mono-black', 'text-mono-platinum', 'font-semibold');
+                });
+                if (btn) {
+                    btn.classList.add('active', 'bg-white', 'text-black', 'font-bold');
+                    btn.classList.remove('bg-mono-black', 'text-mono-platinum', 'font-semibold');
+                }
+            }
+
+            function renderSchedule() {
+                const filtered = classesData.filter(i => selectedDay === 'Tous' || i.day === selectedDay);
+                if (filtered.length === 0) {
+                    scheduleTableWrapper.classList.add('hidden');
+                    emptySchedule.classList.remove('hidden');
+                    return;
+                }
+                scheduleTableWrapper.classList.remove('hidden');
+                emptySchedule.classList.add('hidden');
+
+                scheduleTbody.innerHTML = filtered.map(item => item.free ? `
+                    <tr class="hover:bg-mono-elevated/80 transition-colors">
+                        <td class="py-4 px-6 whitespace-nowrap"><span class="font-bold text-white block">${item.day}</span></td>
+                        <td colspan="4" class="py-4 px-6 text-mono-silver italic">Accès libre à la salle — aucun cours encadré ce jour-là.</td>
+                        <td class="py-4 px-6 text-right whitespace-nowrap">
+                            <a href="#Contact" class="quick-book-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white hover:bg-mono-platinum text-black font-bold text-xs uppercase tracking-wider transition-all">Essayer</a>
+                        </td>
+                    </tr>` : `
+                    <tr class="hover:bg-mono-elevated/80 transition-colors">
+                        <td class="py-4 px-6 whitespace-nowrap">
+                            <span class="font-bold text-white block">${item.day}</span>
+                            <span class="text-xs text-mono-silver font-medium">${item.time}</span>
+                        </td>
+                        <td class="py-4 px-6 font-display text-lg uppercase tracking-wide text-white">${item.title}</td>
+                        <td class="py-4 px-6 whitespace-nowrap"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold border ${badge(item.category)}">${item.category}</span></td>
+                        <td class="py-4 px-6 text-mono-silver whitespace-nowrap">${item.coach}</td>
+                        <td class="py-4 px-6 whitespace-nowrap"><span class="text-xs font-semibold text-white">${item.spots}</span></td>
+                        <td class="py-4 px-6 text-right whitespace-nowrap">
+                            <a href="#Contact" class="quick-book-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white hover:bg-mono-platinum text-black font-bold text-xs uppercase tracking-wider transition-all">Essayer</a>
+                        </td>
+                    </tr>`).join('');
+
+                document.querySelectorAll('.quick-book-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const f = document.getElementById('formula');
+                        if (f) f.value = "Séance d'essai gratuite";
+                    });
+                });
+            }
+
+            dayButtons.forEach(btn => btn.addEventListener('click', () => {
+                setActiveDay(btn);
+                selectedDay = btn.dataset.day;
+                renderSchedule();
+            }));
+            resetFiltersBtn.addEventListener('click', () => { selectedDay = 'Tous'; setActiveDay(null); renderSchedule(); });
+            renderSchedule();
+
+            /* 3. Bascule entre les tarifs */
+            const btnAnnual = document.getElementById('btn-annual');
+            const btnMonthly = document.getElementById('btn-monthly');
+            const annualPlans = document.getElementById('annual-plans');
+            const monthlyPlans = document.getElementById('monthly-plans');
+
+            btnAnnual.addEventListener('click', () => {
+                btnAnnual.classList.add('bg-white', 'text-black'); btnAnnual.classList.remove('text-mono-silver');
+                btnMonthly.classList.remove('bg-white', 'text-black'); btnMonthly.classList.add('text-mono-silver');
+                annualPlans.classList.remove('hidden'); monthlyPlans.classList.add('hidden');
+            });
+            btnMonthly.addEventListener('click', () => {
+                btnMonthly.classList.add('bg-white', 'text-black'); btnMonthly.classList.remove('text-mono-silver');
+                btnAnnual.classList.remove('bg-white', 'text-black'); btnAnnual.classList.add('text-mono-silver');
+                monthlyPlans.classList.remove('hidden'); annualPlans.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.select-plan-btn').forEach(btn => btn.addEventListener('click', () => {
+                const plan = btn.dataset.plan;
+                const sel = document.getElementById('formula');
+                if (sel && plan) for (const o of sel.options) if (o.value === plan) { sel.value = plan; break; }
+            }));
+
+            /* 4. Formulaire : envoi par e-mail */
+            const trialForm = document.getElementById('trial-form');
+            const confirmationBox = document.getElementById('confirmation-box');
+            const confirmationDetails = document.getElementById('confirmation-details');
+            const newBookingBtn = document.getElementById('new-booking-btn');
+            const dateInput = document.getElementById('preferred-date');
+            const submitBtn = document.getElementById('submit-btn');
+            const submitLabel = document.getElementById('submit-label');
+            const submitError = document.getElementById('submit-error');
+            const SUBMIT_TEXT = "Envoyer ma demande d'essai";
+
+            const d = new Date();
+            const todayStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+            dateInput.setAttribute('min', todayStr);
+            dateInput.value = todayStr;
+
+            trialForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                const firstname = document.getElementById('firstname');
+                const lastname = document.getElementById('lastname');
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const formula = document.getElementById('formula');
+                const consent = document.getElementById('consent');
+                const consentError = document.getElementById('consent-error');
+
+                const showError = (input, show) => {
+                    const msg = input.parentElement.querySelector('.error-msg');
+                    if (show) { input.classList.add('border-red-500'); if (msg) msg.classList.remove('hidden'); isValid = false; }
+                    else { input.classList.remove('border-red-500'); if (msg) msg.classList.add('hidden'); }
+                };
+
+                showError(firstname, firstname.value.trim().length < 2);
+                showError(lastname, lastname.value.trim().length < 2);
+                showError(email, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+                showError(phone, phone.value.replace(/\D/g, '').length < 10);
+                showError(dateInput, !dateInput.value);
+
+                if (!consent.checked) { consentError.classList.remove('hidden'); isValid = false; }
+                else consentError.classList.add('hidden');
+
+                if (!isValid) return;
+
+                // Anti-spam : si le champ piège est rempli, la demande est ignorée.
+                if (document.getElementById('honey').value) return;
+
+                submitBtn.disabled = true;
+                submitLabel.textContent = 'Envoi en cours…';
+                submitError.classList.add('hidden');
+
+                const [y, m, day] = dateInput.value.split('-').map(Number);
+                const formattedDate = new Date(y, m - 1, day).toLocaleDateString('fr-FR', {
+                    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+                });
+
+                const payload = {
+                    _subject: `Nouvelle demande SICSBT Musculation : ${formula.value}`,
+                    _template: 'table',
+                    _captcha: 'false',
+                    _replyto: email.value.trim(),
+                    'Prénom': firstname.value.trim(),
+                    'Nom': lastname.value.trim(),
+                    'email': email.value.trim(),
+                    'Téléphone': phone.value.trim(),
+                    'Formule': formula.value,
+                    'Date souhaitée': formattedDate,
+                    'Consentement': "Oui, j'accepte d'être recontacté(e)"
+                };
+
+                // Lien de secours : ouvre l'application mail avec la demande pré-remplie
+                const mailBody = [
+                    `Prénom : ${payload['Prénom']}`,
+                    `Nom : ${payload['Nom']}`,
+                    `E-mail : ${payload.email}`,
+                    `Téléphone : ${payload['Téléphone']}`,
+                    `Formule : ${payload['Formule']}`,
+                    `Date souhaitée : ${payload['Date souhaitée']}`
+                ].join('\n');
+                document.getElementById('mailto-fallback').href =
+                    `mailto:${MAIL_TO}?subject=${encodeURIComponent('Demande SICSBT Musculation : ' + formula.value)}&body=${encodeURIComponent(mailBody)}`;
+
+                try {
+                    const ctrl = new AbortController();
+                    const timer = setTimeout(() => ctrl.abort(), 15000);
+
+                    const res = await fetch(FORM_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(payload),
+                        signal: ctrl.signal
+                    });
+                    clearTimeout(timer);
+
+                    let data = {};
+                    try { data = await res.json(); } catch (_) {}
+
+                    // FormSubmit renvoie success: "true" (chaîne) quand tout va bien
+                    if (!res.ok || String(data.success) !== 'true') {
+                        console.error('FormSubmit :', res.status, data);
+                        throw new Error(data.message || 'Envoi refusé');
+                    }
+
+                    confirmationDetails.innerHTML = `
+                        Merci <strong class="text-white">${escapeHTML(firstname.value.trim())} ${escapeHTML(lastname.value.trim())}</strong> !
+                        Votre demande (<span class="text-white font-semibold underline">${escapeHTML(formula.value)}</span>) pour le
+                        <strong class="text-white">${escapeHTML(formattedDate)}</strong> a bien été envoyée. Nous vous recontacterons rapidement à
+                        <span class="underline">${escapeHTML(email.value.trim())}</span> ou au <strong class="text-white">${escapeHTML(phone.value.trim())}</strong>.
+                    `;
+                    trialForm.classList.add('hidden');
+                    confirmationBox.classList.remove('hidden');
+                    lucide.createIcons();
+                } catch (err) {
+                    console.error(err);
+                    submitError.classList.remove('hidden');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitLabel.textContent = SUBMIT_TEXT;
+                }
+            });
+
+            newBookingBtn.addEventListener('click', () => {
+                trialForm.reset();
+                dateInput.value = todayStr;
+                confirmationBox.classList.add('hidden');
+                trialForm.classList.remove('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
-
