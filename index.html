@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -89,7 +90,7 @@
                     <nav class="hidden md:flex items-center space-x-8 mr-2">
                         <a href="#accueil" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Accueil</a>
                         <a href="#espaces" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Le club et le matériel</a>
-                        <a href="#planning" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Planning et cours</a>
+                        <a href="#planning" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Planning des cours collectifs</a>
                         <a href="#Contact" class="text-sm font-medium text-mono-silver hover:text-white transition-colors">Contact</a>
                     </nav>
                     <a href="#tarifs" id="nav-cta" class="nav-cta inline-flex items-center px-4 sm:px-5 py-2.5 rounded-lg bg-white text-black text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-mono-platinum">Abonnement</a>
@@ -103,7 +104,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-mono-card/80 backdrop-blur-md border-b border-mono-border px-4 pt-2 pb-6 space-y-2">
             <a href="#accueil" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Accueil</a>
             <a href="#espaces" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Le club et le matériel</a>
-            <a href="#planning" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Planning et cours</a>
+            <a href="#planning" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Planning des cours collectifs</a>
             <a href="#tarifs" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Abonnement</a>
             <a href="#Contact" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-white hover:bg-mono-elevated">Contact</a>
         </div>
@@ -111,7 +112,7 @@
 
     <!-- HERO -->
     <section id="accueil" class="relative min-h-screen flex items-center pt-20">
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="relative z-10 max-w-10xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
             <div class="max-w-3xl">
                 <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-mono-card/80 backdrop-blur-md border border-white/25 text-white text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
                     <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
@@ -129,19 +130,20 @@
                         Abonnements et tarifs
                     </a>
                 </div>
-                <div class="grid grid-cols-4 gap-9 mt-10 pt-8 border-t border-white/20 max-w-xxxl">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-9 mt-10 pt-8 border-t border-white/20 max-w-xxxl">
                     <div><p class="font-display text-3xl sm:text-5xl font-bold text-white">100<span>%</span></p><p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Esprit associatif</p></div>
                     <div><p class="font-display text-3xl sm:text-5xl font-bold text-white">64340</p><p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Place Manolo Perez</p></div>
                     <div><p class="font-display text-3xl sm:text-5xl font-bold text-white">6J<span>/7</span></p><p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Accès adhérents</p></div>
                     <div>
-                    <p class="font-display text-xl sm:text-3xl font-bold text-white whitespace-nowrap leading-tight">9H-12H</p>
-                    <p class="font-display text-xl sm:text-3xl font-bold text-white whitespace-nowrap leading-tight">14H30-20H</p>
-                    <p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Du lundi au vendredi</p>
-                </div>
-                </div>
-                <p class="font-display text-xl sm:text-3xl font-bold text-white whitespace-nowrap leading-tight">9H-12H</p>
-                <p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Le Samedi</p> 
-            </div>
+                        <p class="font-display text-xl sm:text-3xl font-bold text-white whitespace-nowrap leading-tight">9H-12H</p>
+                        <p class="font-display text-xl sm:text-3xl font-bold text-white whitespace-nowrap leading-tight">14H30-20H</p>
+                        <p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Du lundi au vendredi</p>
+                    </div>
+                    <div>
+                        <p class="font-display text-xl sm:text-3xl font-bold text-white whitespace-nowrap leading-tight">9H-12H</p>
+                        <p class="text-xs sm:text-sm text-white uppercase tracking-wider mt-1">Le samedi</p>
+                    </div>
+                </div>            </div>
         </div>
     </section>
 
@@ -237,12 +239,12 @@
     </section>
 
     <!-- PLANNING -->
-    <section id="planning" class="py-24 border-y border-white/10">
+    <section id="planning" class="py-28 border-y border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                     <span class="text-mono-silver font-bold text-sm uppercase tracking-widest">Créneaux encadrés et accès libre</span>
-                    <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase text-white mt-2">Planning et cours</h2>
+                    <h2 class="font-display text-5xl sm:text-6xl font-bold uppercase text-white mt-2">Planning des cours collectifs</h2>
                 </div>
                 <p class="text-mono-silver max-w-md text-sm sm:text-base">Filtrez par jour de la semaine pour organiser vos séances au SICSBT Musculation Boucau.</p>
             </div>
@@ -579,7 +581,7 @@
                 <div class="flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-mono-silver">
                     <a href="#accueil" class="hover:text-white transition-colors">Accueil</a>
                     <a href="#espaces" class="hover:text-white transition-colors">Le club et le matériel</a>
-                    <a href="#planning" class="hover:text-white transition-colors">Planning et cours</a>
+                    <a href="#planning" class="hover:text-white transition-colors">Planning des cours collectifs</a>
                     <a href="#tarifs" class="hover:text-white transition-colors">Abonnement</a>
                     <a href="#Contact" class="hover:text-white transition-colors">Contact</a>
                 </div>
