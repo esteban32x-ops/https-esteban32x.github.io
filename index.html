@@ -504,6 +504,7 @@
                             <div>
                                 <label for="formula" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Objet / Formule souhaitée</label>
                                 <select id="formula" name="formula" class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white focus:outline-none focus:border-white transition-colors">
+                                    <option value="Autre">Autre</option>
                                     <option value="Séance d'essai gratuite">Séance d'essai gratuite</option>
                                     <option value="Adhésion Club Annuelle">Adhésion club annuelle (190 €)</option>
                                     <option value="Licencié SICSBT">Tarif licencié SICSBT (170 €)</option>
@@ -519,6 +520,12 @@
                                 <p class="error-msg hidden text-xs text-red-400 mt-1">Veuillez choisir une date valide.</p>
                             </div>
                         </div>
+                        <div>
+    <label for="message" class="block text-xs font-bold uppercase tracking-wider text-white mb-2">Message <span class="text-mono-silver normal-case font-normal">(facultatif)</span></label>
+    <textarea id="message" name="message" rows="4" maxlength="2500"
+        placeholder="Une question, un objectif, une précision sur votre demande…"
+        class="w-full px-4 py-3 rounded-xl bg-mono-black border border-mono-border text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors resize-y"></textarea>
+</div>
 
                         <div class="flex items-start gap-3 pt-2">
                             <input type="checkbox" id="consent" required class="mt-1 w-4 h-4 accent-white rounded bg-mono-black border-mono-border">
@@ -797,7 +804,9 @@
                     'Téléphone': phone.value.trim(),
                     'Formule': formula.value,
                     'Date souhaitée': formattedDate,
+                    'Message': document.getElementById('message').value.trim() || '(aucun message)',
                     'Consentement': "Oui, j'accepte d'être recontacté(e)"
+                    
                 };
 
                 // Lien de secours : ouvre l'application mail avec la demande pré-remplie
@@ -807,7 +816,8 @@
                     `E-mail : ${payload.email}`,
                     `Téléphone : ${payload['Téléphone']}`,
                     `Formule : ${payload['Formule']}`,
-                    `Date souhaitée : ${payload['Date souhaitée']}`
+                    `Date souhaitée : ${payload['Date souhaitée']}`,
+                    `Message : ${payload['Message']}`
                 ].join('\n');
                 document.getElementById('mailto-fallback').href =
                     `mailto:${MAIL_TO}?subject=${encodeURIComponent('Demande SICSBT Musculation : ' + formula.value)}&body=${encodeURIComponent(mailBody)}`;
